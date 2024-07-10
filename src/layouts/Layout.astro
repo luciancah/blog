@@ -15,9 +15,11 @@ const { title, description } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <Head title={`${title} | ${SITE.TITLE}`} description={description} />
-  </head>
+  <script>
+    import { inject } from "@vercel/analytics";
+    inject();
+  </script>
+  <Head title={`${title} | ${SITE.TITLE}`} description={description} />
   <body>
     <Header />
     <main>
