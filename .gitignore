@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+/src/content/.obsidian
+/src/content/.makemd
+/src/content/.space
+/src/content/.trash
