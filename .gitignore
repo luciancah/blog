@@ -26,3 +26,4 @@ pnpm-debug.log*
 /src/content/.makemd
 /src/content/.space
 /src/content/.trash
+src/content/template/index.md
