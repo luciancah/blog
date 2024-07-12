@@ -9,8 +9,8 @@ export const SITE: Site = {
 };
 
 export const HOME: Metadata = {
-  TITLE: "Home",
-  DESCRIPTION: "홈",
+  TITLE: "바이너리 브라더",
+  DESCRIPTION: "이진형 블로그입니다.............",
 };
 
 export const BLOG: Metadata = {
