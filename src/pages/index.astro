@@ -23,103 +23,107 @@ const projects: CollectionEntry<"projects">[] = (
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
-    <h1 class="animate font-semibold text-black dark:text-white">
-      🖖🏻 나 이진형이요
-    </h1>
-    <div class="space-y-16">
-      <section>
-        <article class="space-y-4">
-          <span class="animate">
-            <p>
-              이것저것 합니다. <Link href="https://github.com/luciancah"
-                >Github</Link
-              >
-            </p>
-            <figure>
-              <Image
-                src="/jinjin.jpg"
-                alt="나요"
-                class="rounded-lg"
-                width="300"
-                height="300"
-                loading="lazy"
-              />
-              <figcaption
-                class="text-center text-sm italic text-gray-500 dark:text-gray-400"
-              >
-                이게 나요
-              </figcaption>
-            </figure>
-          </span>
-        </article>
-      </section>
+    <aside data-pagefind-ignore>
+      <h1 class="animate font-semibold text-black dark:text-white">
+        🖖🏻 나 이진형이요
+      </h1>
+      <div class="space-y-16">
+        <section>
+          <article class="space-y-4">
+            <span class="animate">
+              <p>
+                이것저것 합니다. <Link href="https://github.com/luciancah"
+                  >Github</Link
+                >
+              </p>
+              <figure>
+                <Image
+                  src="/jinjin.jpg"
+                  alt="나요"
+                  class="rounded-lg"
+                  width="300"
+                  height="300"
+                  loading="lazy"
+                />
+                <figcaption
+                  class="text-center text-sm italic text-gray-500 dark:text-gray-400"
+                >
+                  이게 나요
+                </figcaption>
+              </figure>
+            </span>
+          </article>
+        </section>
 
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap items-center justify-between gap-y-2">
+        <section class="animate space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-y-2">
+            <h2 class="font-semibold text-black dark:text-white">
+              🙈 최근 게시글
+            </h2>
+            <Link href="/blog"> 전체보기 </Link>
+          </div>
+          <ul class="not-prose flex flex-col gap-4">
+            {
+              blog.map((post) => (
+                <li>
+                  <ArrowCard entry={post} />
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section class="animate space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-y-2">
+            <h2 class="font-semibold text-black dark:text-white">
+              🙉 최근 프로젝트
+            </h2>
+            <Link href="/projects"> 전체보기 </Link>
+          </div>
+          <ul class="not-prose flex flex-col gap-4">
+            {
+              projects.map((project) => (
+                <li>
+                  <ArrowCard entry={project} />
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section class="animate space-y-4">
           <h2 class="font-semibold text-black dark:text-white">
-            🙈 최근 게시글
+            📬 연락하쇼잉
           </h2>
-          <Link href="/blog"> 전체보기 </Link>
-        </div>
-        <ul class="not-prose flex flex-col gap-4">
-          {
-            blog.map((post) => (
-              <li>
-                <ArrowCard entry={post} />
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap items-center justify-between gap-y-2">
-          <h2 class="font-semibold text-black dark:text-white">
-            🙉 최근 프로젝트
-          </h2>
-          <Link href="/projects"> 전체보기 </Link>
-        </div>
-        <ul class="not-prose flex flex-col gap-4">
-          {
-            projects.map((project) => (
-              <li>
-                <ArrowCard entry={project} />
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-
-      <section class="animate space-y-4">
-        <h2 class="font-semibold text-black dark:text-white">📬 연락하쇼잉</h2>
-        <!-- <article>
+          <!-- <article>
           <p>머 쓸게 없네..</p>
         </article> -->
-        <ul class="not-prose flex flex-wrap gap-2">
-          {
-            SOCIALS.map((SOCIAL) => (
-              <li class="flex gap-x-2 text-nowrap">
-                <Link
-                  href={SOCIAL.HREF}
-                  external
-                  aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
-                >
-                  {SOCIAL.NAME}
-                </Link>
-                {"/"}
-              </li>
-            ))
-          }
-          <li class="line-clamp-1">
-            <Link
-              href={`mailto:${SITE.EMAIL}`}
-              aria-label={`Email ${SITE.TITLE}`}
-            >
-              {SITE.EMAIL}
-            </Link>
-          </li>
-        </ul>
-      </section>
-    </div>
+          <ul class="not-prose flex flex-wrap gap-2">
+            {
+              SOCIALS.map((SOCIAL) => (
+                <li class="flex gap-x-2 text-nowrap">
+                  <Link
+                    href={SOCIAL.HREF}
+                    external
+                    aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
+                  >
+                    {SOCIAL.NAME}
+                  </Link>
+                  {"/"}
+                </li>
+              ))
+            }
+            <li class="line-clamp-1">
+              <Link
+                href={`mailto:${SITE.EMAIL}`}
+                aria-label={`Email ${SITE.TITLE}`}
+              >
+                {SITE.EMAIL}
+              </Link>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </aside>
   </Container>
 </Layout>
