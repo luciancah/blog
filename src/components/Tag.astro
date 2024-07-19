@@ -1,0 +1,44 @@
+---
+import Link from "./Link.astro";
+
+type Props = {
+  tags: string[];
+  link: string;
+};
+
+const { tags, link } = Astro.props;
+---
+
+<div class="flex flex-wrap gap-1">
+  {
+    tags.map((tag: string) => (
+      <Link href={`/${link}/${tag.toLowerCase()}`}>
+        <div class="tag">
+          <span class="tag-text">{tag}</span>
+        </div>
+      </Link>
+    ))
+  }
+</div>
+
+<style>
+  .tag {
+    @apply inline-flex items-center justify-center rounded-full bg-stone-100 px-3 py-2 transition-colors dark:bg-zinc-900;
+  }
+
+  .tag:hover {
+    @apply bg-stone-200 dark:bg-zinc-800;
+  }
+
+  .tag-text {
+    @apply text-sm font-medium text-gray-800 dark:text-gray-200;
+  }
+</style>
+
+<script>
+  export default {
+    props: {
+      tagText: String,
+    },
+  };
+</script>

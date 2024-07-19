@@ -8,6 +8,7 @@ import BackToPrevious from "@components/BackToPrevious.astro";
 import PostNavigation from "@components/PostNavigation.astro";
 import TableOfContents from "@components/TableOfContents.astro";
 import Giscus from "@components/Giscus.astro";
+import Tag from "@components/Tag.astro";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
@@ -56,7 +57,7 @@ const { Content, headings } = await post.render();
     <div class="animate">
       <BackToPrevious href="/blog">Back to blog</BackToPrevious>
     </div>
-    <div class="my-10 space-y-1">
+    <div class="my-10 space-y-2">
       <div class="animate flex items-center gap-1.5">
         <div class="font-base text-sm">
           <FormattedDate date={post.data.date} />
@@ -69,6 +70,15 @@ const { Content, headings } = await post.render();
       <h1 class="animate text-3xl font-semibold text-black dark:text-white">
         {post.data.title}
       </h1>
+      <h2 class="animate text-lg text-gray-500 dark:text-gray-400">
+        {post.data.description}
+      </h2>
+      <div class="animate">
+        <Tag tags={post.data.tags} link="tags" />
+      </div>
+      <!-- <h2 class="animate text-lg text-gray-500 dark:text-gray-400">
+        {post.data.tags.join(", ")}
+      </h2> -->
     </div>
     {headings.length > 0 && <TableOfContents headings={headings} />}
     <article class="animate">

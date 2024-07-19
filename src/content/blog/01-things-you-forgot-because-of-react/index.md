@@ -1,7 +1,10 @@
 ---
 title: "[번역] React 때문에 (몰랐거나!) 잊었던 것들"
-description: Josh Collinsworth 블로그 아티클의 번역본입니다.
+description: Things you forgot (or never knew) because of React
 date: 2024-07-17
+tags:
+  - web
+  - react
 ---
 
 ## React 때문에 잊었거나 몰랐던 것들

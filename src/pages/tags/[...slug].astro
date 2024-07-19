@@ -1,0 +1,77 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import { TAGS } from "@consts";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  const tags = new Set();
+  posts.forEach((post) => {
+    if (!post.data.draft && post.data.tags) {
+      post.data.tags.forEach((tag) => tags.add(tag));
+    }
+  });
+
+  return Array.from(tags).map((tag) => ({
+    params: { slug: tag },
+  }));
+}
+
+const tag = Astro.params.slug as string;
+
+const data = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .filter((post) => post.data.tags && post.data.tags.includes(tag))
+  .sort(
+    (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
+  );
+
+type Acc = {
+  [year: string]: CollectionEntry<"blog">[];
+};
+
+const posts = data.reduce((acc: Acc, post) => {
+  const year = post.data.date.getFullYear().toString();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {});
+
+const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
+---
+
+<Layout title={TAGS.TITLE} description={TAGS.DESCRIPTION}>
+  <Container>
+    <aside data-pagefind-ignore>
+      <div class="space-y-10">
+        <div class="space-y-4">
+          <div class="font-semibold text-black dark:text-white">
+            searching tag: {tag}
+          </div>
+          {
+            years.map((year) => (
+              <section class="animate space-y-4">
+                <div class="font-semibold text-black dark:text-white">
+                  {year}
+                </div>
+                <div>
+                  <ul class="not-prose flex flex-col gap-4">
+                    {posts[year].map((post) => (
+                      <li>
+                        <ArrowCard entry={post} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </section>
+            ))
+          }
+        </div>
+      </div>
+    </aside>
+  </Container>
+</Layout>

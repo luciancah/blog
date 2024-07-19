@@ -23,11 +23,12 @@ export const PROJECTS: Metadata = {
   DESCRIPTION: "프로젝트",
 };
 
+export const TAGS: Metadata = {
+  TITLE: "Tags",
+  DESCRIPTION: "태그",
+};
+
 export const SOCIALS: Socials = [
-  {
-    NAME: "X (formerly Twitter)",
-    HREF: "https://twitter.com/luka2843",
-  },
   {
     NAME: "GitHub",
     HREF: "https://github.com/luciancah",

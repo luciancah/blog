@@ -2,6 +2,11 @@
 title: Vercel로 나만의 블로그 뚝딱 만들기
 description: "'딸깍' 블로그 5분 완성"
 date: 2024-07-13
+tags:
+  - web
+  - astro
+  - vercel
+
 ---
 
 ---
